@@ -1,8 +1,10 @@
 /**
- * 链表的实现
+ * 单链表的实现
  */
+#include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
+using namespace std;
 #define flag 0
 
 typedef int ElemType;
@@ -23,7 +25,7 @@ Lnode *Get_LinkList(LinkList L, int i) {
 /* 在带头结点单链表中查找值等于给定值的节点 */
 int Locate_LinkList(LinkList L, int x) {
 	LinkList p;
-	int j;
+	int j = 1;
 	p = L->next;
 	while(p != NULL && p->data != x) {
 		p = p->next;
@@ -39,13 +41,14 @@ int Locate_LinkList(LinkList L, int x) {
 }
 
 /* 在带头结点单链表的第i个位置之后插入值为x的元素 */
-int Insert_LinkList(LinkList L, int i, int x) {
+int Insert_LinkList(LinkList &L, int i, int x) {
 	Lnode *p, *s;
 	p = Get_LinkList(L, i);
 	if(p == NULL) {
 		printf("参数i输入有误!\n");
 		return 0;
 	} else {
+		s = (Lnode *)malloc(sizeof(Lnode));
 		s->data = x;
 		s->next = p->next;
 		p->next = s;
@@ -60,7 +63,11 @@ int Delete_LinkList(LinkList L, int i) {
 	if(p == NULL) {
 		printf("待删除结点前结点不存在!\n");
 		return -1;
-	} else {
+	} else if(p->next == NULL) {
+		printf("该结点不存在!\n");
+		return 0;
+	}
+	else {
 		s = p->next;
 		p->next = s->next;
 		free(s);
@@ -69,7 +76,7 @@ int Delete_LinkList(LinkList L, int i) {
 }
 
 /* 前插法创建带头结点单链表 */
-void Create_LinkList(LinkList L, int n) {
+void Create_LinkList(LinkList &L, int n) {
 	int i;
 	LinkList p;
 	L = (LinkList)malloc(sizeof(Lnode));
@@ -93,22 +100,19 @@ void Display_LinkList(LinkList L) {
 }
 
 /* 主程序 */
-int main() {
+int main(int argc, char* argv[]) {
 	printf("初始化\n建立单链表如下：\n");
 	LinkList L;
 	int x, y, cord, i;
-	printf("1111111");
 	Create_LinkList(L, 4);
-	printf("2222222");
 	Display_LinkList(L);
-	printf("3333333");
 	do {
-		printf("\n			主菜单			\n");
-		printf("	1 尾插法插入元素到指定位置	\n");
-		printf("	2 删除某一指定元素			\n");
+		printf("\n			  主菜单	 			\n");
+		printf("	1 尾插法插入元素到指定位置		\n");
+		printf("	2 删除某一指定元素				\n");
 		printf("	3 查找指定元素				\n");
 		printf("	0 结束程序					\n");
-		printf("----------------------------------\n");
+		printf("--------------------------------\n");
 		printf("请输入您选择的菜单号<1, 2, 3, 0>：");
 		scanf("%d", &cord);
 		switch(cord)
