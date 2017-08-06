@@ -1,5 +1,5 @@
 /**
- * 循环对列的实现
+ * 循环队列的实现
  */
 #include<iostream>
 #include<stdio.h>
@@ -9,14 +9,14 @@ using namespace std;
 
 typedef int ElemType;
 
-/* 对列存储结构 */
+/* 队列存储结构 */
 typedef struct SqQueue
 {
 	ElemType elem[MaxSize];
 	int front, rear; // 队首和队尾指针
 } SqQueue;
 
-/* 循环对列初始化 */
+/* 循环队列初始化 */
 SqQueue *Init_SqQueue() {
 	SqQueue *q;
 	q = (SqQueue *)malloc(sizeof(SqQueue));
@@ -40,7 +40,7 @@ int De_SqQueue(SqQueue *q, ElemType &e) {
 	return 1;
 }
 
-/* 循环对列的显示 */
+/* 循环队列的显示 */
 void Display_SqQueue(SqQueue *q) {
 	int i, Q;
 	Q = q->front;
