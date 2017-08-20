@@ -5,15 +5,23 @@
 
 /* 排序算法 */
 void binSort(int arr[], int length) {
-	int i, low, high, mid, key;
+	int i, j, low, high, mid, key;
 	for(i=1; i<length; i++) {
 		key = arr[i];
 		low = 0;
 		high = i - 1;
 		while(low <= high) {
-				
+			mid = (low + high) / 2;
+			if(key < arr[mid]) {
+				high = mid - 1; 		
+			} else {
+				low = mid + 1;
+			}
 		}
-		arr[++j] = key;
+		for(j=i-1; j>=low; j--) {
+			arr[j+1] = arr[j];
+		}
+		arr[low] = key;
 	}	
 }
 
