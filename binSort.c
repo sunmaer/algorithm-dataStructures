@@ -10,7 +10,7 @@ void binSort(int arr[], int length) {
 		key = arr[i];
 		low = 0;
 		high = i - 1;
-		while(low <= high) {
+		while(low <= high) { // 折半插入可减少关键字的比较次数
 			mid = (low + high) / 2;
 			if(key < arr[mid]) {
 				high = mid - 1; 		
