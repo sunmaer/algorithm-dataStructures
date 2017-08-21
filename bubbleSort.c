@@ -6,7 +6,7 @@
 /* 排序算法 */
 void bubbleSort(int arr[], int length) {
 	int i, j, temp, flag;
-	for(i=0; i<length; i++) {
+	for(i=0; i<length-1; i++) {
 		flag = 0;
 		for(j=0; j<length-i-1; j++) {
 			if(arr[j] > arr[j+1]) {
@@ -16,7 +16,7 @@ void bubbleSort(int arr[], int length) {
 				flag = 1;
 			}
 		}
-		if(flag == 0) {
+		if(flag == 0) { // 如果一趟中没有交换则表明数组已经有序，提前退出循环
 			break;
 		}
 	}	
@@ -44,5 +44,5 @@ int main() {
 
 /** 
  * 空间复杂度：只需要一个辅助空间存储当前元素，即空间复杂度为O(1)
- * 时间复杂度：所有语句的执行频度之和，双重循环，即时间复杂度为O(n^2)
+ * 时间复杂度：所有语句的执行频度之和，双重循环。第i次比较次数为n-i次，移动次数为3*(n-i)次，所以总的移动次数为3n*(n-1)/2次，即时间复杂度为O(n^2)
  */
