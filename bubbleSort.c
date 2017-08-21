@@ -5,14 +5,19 @@
 
 /* 排序算法 */
 void bubbleSort(int arr[], int length) {
-	int i, j, temp;
+	int i, j, temp, flag;
 	for(i=0; i<length; i++) {
+		flag = 0;
 		for(j=0; j<length-i-1; j++) {
 			if(arr[j] > arr[j+1]) {
 				temp = arr[j];
 				arr[j] = arr[j+1];
 				arr[j+1] = temp;
-			}	
+				flag = 1;
+			}
+		}
+		if(flag == 0) {
+			break;
 		}
 	}	
 }
