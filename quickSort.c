@@ -5,9 +5,11 @@
 
 /* 排序算法 */
 void quickSort(int arr[], int low, int high) {
-	int i=low, j=high, x=arr[low];
+	int i=low, j=high, x=arr[i];
 	while(i<j) {
-		
+		while(i < j && arr[j] < x) {
+			arr[i] = arr[j]
+		}		
 	}
 }
 
