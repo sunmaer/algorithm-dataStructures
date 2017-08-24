@@ -39,7 +39,7 @@ int main() {
 	int length = 8, i;
 	printf("排序前数组：");
 	show(arr, length);
-	quickSort(arr, length);
+	quickSort(arr, 0, length);
 	printf("排序后数组：");
 	show(arr, length);
 	return 0;
