@@ -7,10 +7,22 @@
 void quickSort(int arr[], int low, int high) {
 	int i=low, j=high, x=arr[i];
 	while(i<j) {
-		while(i < j && arr[j] < x) {
-			arr[i] = arr[j]
-		}		
+		while(i < j && arr[j] >= x) {
+			j--;
+		}
+		if(i < j) { 
+			arr[i++] = arr[j];
+		}
+		while(i < j && arr[i] <= x) {
+			i++;
+		}
+		if(i < j) {
+			arr[j--] = arr[i];
+		}	
 	}
+	arr[i] = x;
+	quickSort(arr, low, i-1);
+	quickSort(arr, i+1, high);
 }
 
 /* 打印数组 */
